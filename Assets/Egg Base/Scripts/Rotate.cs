@@ -6,9 +6,10 @@ public class Rotate : MonoBehaviour {
     
 	//visible in inspector
 	public Vector3 rotation;
+	public float speedRotation;
 	
 	void Update(){
 		//rotate
-		transform.Rotate(rotation * Time.deltaTime);
+		transform.Rotate(rotation * Time.deltaTime * speedRotation);
 	}
 }
