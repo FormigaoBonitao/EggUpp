@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1598,7 +1598,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88af8e3e08907bb4ebe432dbd7846de9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 0}
 --- !u!198 &1203747756 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 354516788418880055, guid: 5a0ec103dee6c1a48a8dbaa6c8262c78, type: 3}
@@ -3324,9 +3323,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1548024567368110117, guid: e074d5669397340449e1ce8946151ec3, type: 3}
+      propertyPath: m_Drag
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1548024567368110120, guid: e074d5669397340449e1ce8946151ec3, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548024567368110122, guid: e074d5669397340449e1ce8946151ec3, type: 3}
+      propertyPath: jumpForce
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548024567368110122, guid: e074d5669397340449e1ce8946151ec3, type: 3}
+      propertyPath: bouncePadJumpForce
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548024567368110122, guid: e074d5669397340449e1ce8946151ec3, type: 3}
+      propertyPath: fallForce
+      value: -0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4860140299308780263, guid: e074d5669397340449e1ce8946151ec3, type: 3}
       propertyPath: m_PlayOnAwake
