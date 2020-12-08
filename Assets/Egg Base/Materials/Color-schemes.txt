@@ -1,0 +1,39 @@
+Scheme 01
+Bounce	FF2040
+Connection	027050
+Diamond	FF6000	
+Egg	FF0060
+Net	15DC43
+Pole	30FFC0
+Ring	FFC100
+Camera	6BA5A0
+
+Scheme 02
+Bounce	6F0EFF
+Connection	793761
+Diamond	4CFFC5
+Egg	FF2900
+Net	F58195
+Pole	E99D8D
+Ring	8814C3
+Camera	DEB4FF
+
+Scheme 03
+Bounce	FFC100
+Connection	BC922A
+Diamond	FF9500
+Egg	B2C301
+Net	F5B281
+Pole	FBEC9E
+Ring	F92B2B
+Camera	63B096
+
+Scheme 05
+Bounce	F50B48
+Connection	C7A2F3
+Diamond	FF0066
+Egg	FF9204
+Net	329DFF
+Pole	481D48
+Ring	00F4FF
+Camera	3C094B
