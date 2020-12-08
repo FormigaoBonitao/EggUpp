@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
+
 public class GameManager : MonoBehaviour {
     
 	//visible in inspector
@@ -35,7 +36,11 @@ public class GameManager : MonoBehaviour {
 	
 	public AudioSource jumpAudio;
 	public AudioSource victory;
+	public AudioSource eggFall;
+	public AudioSource eggCrash;
+	public AudioSource solut;
 	
+
 	public GameObject tapToRestart;
 	public GameObject tapToContinue;
 
@@ -46,6 +51,7 @@ public class GameManager : MonoBehaviour {
 	private int playerObject, collideObject;
 
 	public GameObject BrokePlatform;
+	public GameObject BigPlatform;
 	
 
 	
@@ -119,7 +125,8 @@ public class GameManager : MonoBehaviour {
 			if(player.position.y < lastHeight - 4.5f){
 				gameOver = true;			
 				GameOver(false);
-			};
+				
+			}
 		}
 		else if(Input.GetMouseButtonDown(0)){
 			//if game is over and player taps, reload the current scene
@@ -151,7 +158,7 @@ public class GameManager : MonoBehaviour {
 		}
 		
 		//increase pitch for rewarding sound effect
-		jumpAudio.pitch *= 1.05f;
+		jumpAudio.pitch *= 1.02f;
 		jumpAudio.Play();
 		
 		currentHeight++;
@@ -208,7 +215,8 @@ public class GameManager : MonoBehaviour {
 		{
 			//play confetti and continue to next level
 			confetti.Play();
-			
+			solut.Play();
+
 			rightCircle.color = leftCircle.color;
 			rightBackground.SetActive(true);
 			
@@ -240,6 +248,20 @@ public class GameManager : MonoBehaviour {
 		playerParent.GetComponent<SphereCollider>().isTrigger = false;
 		BrokePlatform.SetActive(true);
 		PlayerPrefs.SetInt("BoolGameOver", 0);
+
+		
+
+
+		if (playerParent.GetComponent<Rigidbody>().velocity.y < 0)
+        {
+			eggFall.Play();
+		}
+
+
+	
+
+		BigPlatform.GetComponent<Platform>().enabled = false;
+	
 	}
 
 	public void WinScreen()
@@ -250,22 +272,15 @@ public class GameManager : MonoBehaviour {
 		playerParent.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
 		playerParent.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationY;	
 		PlayerPrefs.SetInt("BoolGameOver", 1);
-
+		
 
 
 		if (playerParent.GetComponent<Rigidbody>().velocity.y > 0)
         {
 			Physics.IgnoreLayerCollision(playerObject, collideObject, true);
+			
 		}
-
-		
-		
-
-		
-
-
-
-
-
 	}
+
+ 
 }
