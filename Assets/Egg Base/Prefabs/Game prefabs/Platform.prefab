@@ -90,6 +90,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6570341708130955701}
+  - component: {fileID: 2341413800026990984}
+  - component: {fileID: 8409441513025597274}
   m_Layer: 9
   m_Name: Diamond holder
   m_TagString: Untagged
@@ -113,6 +115,33 @@ Transform:
   m_Father: {fileID: 7228204267215855448}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2341413800026990984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805759671479090633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eeb529005a44104ea61a6542cb95a01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idle: {fileID: 2517628839661882458}
+--- !u!114 &8409441513025597274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805759671479090633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b84097c033478ed469703c0cd2f56185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotation: {x: 0, y: 360, z: 0}
+  speedRotation: -0.8
 --- !u!1 &1522689476835324134
 GameObject:
   m_ObjectHideFlags: 0
@@ -5386,6 +5415,8 @@ GameObject:
   - component: {fileID: 920236547794887514}
   - component: {fileID: 2517628839661882458}
   - component: {fileID: 2198445312029912420}
+  - component: {fileID: 4858185382030779877}
+  - component: {fileID: 2433388986194858458}
   m_Layer: 9
   m_Name: D-idle
   m_TagString: Untagged
@@ -10245,6 +10276,32 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &4858185382030779877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2875325765000481560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eeb529005a44104ea61a6542cb95a01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idle: {fileID: 0}
+--- !u!114 &2433388986194858458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2875325765000481560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eeb529005a44104ea61a6542cb95a01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idle: {fileID: 0}
 --- !u!1 &3085412244527932757
 GameObject:
   m_ObjectHideFlags: 0
