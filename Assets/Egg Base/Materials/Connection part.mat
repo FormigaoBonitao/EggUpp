@@ -158,7 +158,15 @@ Material:
     - _UseTranslucent: 0
     - _ZWrite: 1
     m_Colors:
+<<<<<<< HEAD
+<<<<<<< HEAD
+    - _Color: {r: 0.12509288, g: 0.6016684, b: 0.7151155, a: 1}
+=======
+    - _Color: {r: 0.52480096, g: 0.6931786, b: 0.28894666, a: 1}
+>>>>>>> d6bb1ed417511f0af1cdac364d2cdcabac0ef3a9
+=======
     - _Color: {r: 0.007843138, g: 0.4392157, b: 0.3137255, a: 1}
+>>>>>>> 4ad7a27f63ca80be9e9540022ed0303f3d9b6f8b
     - _DetailColor: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveColor: {r: 1, g: 1, b: 1, a: 0.5}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

@@ -37,18 +37,24 @@ public class LevelGenerator : MonoBehaviour {
 	//not in inspector
 	int size;
 	GameManager manager;
-  
-    private void Start(){
+
+	
+	
+
+	private void Start(){
 		//get the total level size from the game manager
 		size = FindObjectOfType<GameManager>().totalHeight;
 		BoolGameOver = PlayerPrefs.GetInt("BoolGameOver");
 		//build level
+		
 		MakeLevel();
 		if (BoolGameOver == 1)
-        {
-			ChangeColor(Random.Range(0,3));
-		}
-		
+
+		{
+			ChangeColor(Random.Range(0, 3));
+
+      
+
 
 
 
@@ -109,6 +115,41 @@ public class LevelGenerator : MonoBehaviour {
 	{
 		if (colorSet == 0)
 		{
+<<<<<<< HEAD
+			connectionPart.color = new Color(0.5f, 0.2f, 0.1f, 1f);
+			Net.color = new Color(Random.value, Random.value, Random.value, 1);
+			BountyPad.color = new Color(Random.value, Random.value, Random.value, 1);
+			Ring.color = new Color(Random.value, Random.value, Random.value, 1);
+			Pole.color = new Color(Random.value, Random.value, Random.value, 1);
+			cameraColor.backgroundColor = Color.white;
+		}
+		else if (colorSet == 1)
+		{
+			connectionPart.color = new Color(0.5f, 0.2f, 0.1f, 1f);
+			Net.color = new Color(Random.value, Random.value, Random.value, 1);
+			BountyPad.color = new Color(Random.value, Random.value, Random.value, 1);
+			Ring.color = new Color(Random.value, Random.value, Random.value, 1);
+			Pole.color = new Color(Random.value, Random.value, Random.value, 1);
+			cameraColor.backgroundColor = Color.black;
+		}
+		else if (colorSet == 2)
+		{
+			connectionPart.color = new Color(0.5f, 0.2f, 0.1f, 1f);
+			Net.color = new Color(Random.value, Random.value, Random.value, 1);
+			BountyPad.color = new Color(Random.value, Random.value, Random.value, 1);
+			Ring.color = new Color(Random.value, Random.value, Random.value, 1);
+			Pole.color = new Color(Random.value, Random.value, Random.value, 1);
+			cameraColor.backgroundColor = Color.blue;
+		}
+		else if (colorSet == 3)
+		{
+			connectionPart.color = new Color(0.5f, 0.2f, 0.1f, 1f);
+			Net.color = new Color(Random.value, Random.value, Random.value, 1);
+			BountyPad.color = new Color(Random.value, Random.value, Random.value, 1);
+			Ring.color = new Color(Random.value, Random.value, Random.value, 1);
+			Pole.color = new Color(Random.value, Random.value, Random.value, 1);
+			cameraColor.backgroundColor = Color.green;
+=======
 			connectionPart.color = new Color(0.007843138f, 0.4392157f, 0.3137255f, 1);
 			Net.color = new Color(0.08235294f, 0.8627451f, 0.2627451f, 1);
 			BountyPad.color = new Color(1f, 0.12f, 0.25f, 1);
@@ -150,9 +191,14 @@ public class LevelGenerator : MonoBehaviour {
 			cameraColor.backgroundColor = new Color(0.2352941f, 0.03529412f, 0.2941177f, 1);
 			Egg.color = new Color(1f, 0.572549f, 0.01568628f, 1);
 			Diamond.color = new Color(1f, 0f, 0.4f, 1);
+>>>>>>> 4ad7a27f63ca80be9e9540022ed0303f3d9b6f8b
 		}
 
 
 	}
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 4ad7a27f63ca80be9e9540022ed0303f3d9b6f8b
 }
