@@ -63,29 +63,28 @@ public class Player : MonoBehaviour
 
 		void OnTriggerEnter(Collider other)
 		{
-			//return if collider isn't a platform or if player is below collider (meaning the player should jump through the platform)
-			//if(!other.gameObject.CompareTag("Platform") || transform.position.y < other.gameObject.transform.position.y)
-			//	return;
+        //return if collider isn't a platform or if player is below collider (meaning the player should jump through the platform)
+        //if(!other.gameObject.CompareTag("Platform") || transform.position.y < other.gameObject.transform.position.y)
+        //	return;
 
-			//show platform bounce effect
-			Platform platform = other.gameObject.transform.parent.GetComponent<Platform>();
-			platform.Bounce(transform.position - (Vector3.up * eggHeight), eggMat);
+        //show platform bounce effect
+        Platform platform = other.gameObject.transform.parent.GetComponent<Platform>();
+        platform.Bounce(transform.position - (Vector3.up * eggHeight), eggMat);
+		Cam();
 
-			//jump up
-			rb.velocity = Vector3.up * (platform.hasBouncePad ? bouncePadJumpForce : jumpForce);
-		
+		// jump up
 
-		manager.Jumped(transform.position);
+		rb.velocity = Vector3.up * (platform.hasBouncePad ? bouncePadJumpForce : jumpForce);
+
+
+        manager.Jumped(transform.position);
 
 		//hide the intro title after the player jumps
 		if (transform.position.y > 1f)
 			manager.HideTitle();
 
+		
 
-		if (other.gameObject.tag.Equals("Platform"))
-		{
-			cameraHolder.GetComponent<CameraController>().CheckJump();
-		}
 	}
 	private void OnCollisionEnter(Collision collision)
 	{
@@ -96,11 +95,16 @@ public class Player : MonoBehaviour
 		}
 
 		
+
+
 	}
 
 
 
-
+	public void Cam()
+    {
+		cameraHolder.GetComponent<CameraController>().CheckJump();
+	}
 
 
 

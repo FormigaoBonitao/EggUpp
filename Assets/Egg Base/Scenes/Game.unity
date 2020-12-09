@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1060,6 +1060,7 @@ GameObject:
   m_Component:
   - component: {fileID: 602758268}
   - component: {fileID: 602758267}
+  - component: {fileID: 602758269}
   m_Layer: 0
   m_Name: Level generator
   m_TagString: Untagged
@@ -1080,6 +1081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 1522689476835324134, guid: 0e8f1cd527fbd4041a2a50e79003e387, type: 3}
+  doublePlatformG: {fileID: 1522689476835324134, guid: a29a6445f2b55604bb65712a2eb82e8e, type: 3}
   connectionPart: {fileID: 2100000, guid: c41fc927001e8d14c85cde6b6c3b7acd, type: 2}
   Net: {fileID: 2100000, guid: f36fad7d5a7718e4982af1afc016fa2d, type: 2}
   BountyPad: {fileID: 2100000, guid: 6e55ecc9dc29c0e42be0dd2b6a022520, type: 2}
@@ -1092,14 +1094,13 @@ MonoBehaviour:
   pole: {fileID: 1361770968}
   finishLine: {fileID: 4285758705053515644}
   yOffset: 1.4
+  DoubleYoffset: 0
   rotationMin: 10
   rotationMax: 120
   startHeight: 0
   startRotation: 170
   diamondChance: 3
-  currentlvl: 0
-  nextLvl: 0
-  BoolGameOver: 0
+  doubleChance: 15
 --- !u!4 &602758268
 Transform:
   m_ObjectHideFlags: 0
@@ -1114,6 +1115,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &602758269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602758266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 022db846ba3f8f843bc9614ad868b1eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platform: {fileID: 1522689476835324134, guid: 0e8f1cd527fbd4041a2a50e79003e387, type: 3}
+  doublePlatformG: {fileID: 0}
+  connectionPart: {fileID: 0}
+  Net: {fileID: 0}
+  BountyPad: {fileID: 0}
+  Ring: {fileID: 0}
+  Pole: {fileID: 0}
+  cameraColor: {fileID: 0}
+  Egg: {fileID: 0}
+  Diamond: {fileID: 0}
+  parent: {fileID: 1526458767}
+  pole: {fileID: 1361770968}
+  finishLine: {fileID: 4285758705053515644}
+  yOffset: 1.4
+  DoubleYoffset: 0
+  rotationMin: 10
+  rotationMax: 120
+  startHeight: 0
+  startRotation: 170
+  diamondChance: 3
+  level: 0
 --- !u!1 &620258970
 GameObject:
   m_ObjectHideFlags: 0
@@ -3343,6 +3377,10 @@ PrefabInstance:
       propertyPath: fallForce
       value: -0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 1548024567368110122, guid: e074d5669397340449e1ce8946151ec3, type: 3}
+      propertyPath: cameraHolder
+      value: 
+      objectReference: {fileID: 1596048092}
     - target: {fileID: 4860140299308780263, guid: e074d5669397340449e1ce8946151ec3, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0

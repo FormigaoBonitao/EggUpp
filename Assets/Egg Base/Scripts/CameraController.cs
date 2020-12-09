@@ -55,5 +55,6 @@ public class CameraController : MonoBehaviour {
     {
 		target = Vector3.up * (player.transform.position.y);
 		
+		
 	}
 }
