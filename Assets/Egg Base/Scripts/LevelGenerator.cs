@@ -7,6 +7,7 @@ public class LevelGenerator : MonoBehaviour {
 	
 	//visible in inspector
 	public GameObject platform;
+	public GameObject doublePlatformG;
 	public Material connectionPart;
 	public Material Net;
 	public Material BountyPad;
@@ -21,6 +22,7 @@ public class LevelGenerator : MonoBehaviour {
 	public Transform finishLine;
 	
 	public float yOffset;
+	public float DoubleYoffset;
 	public int rotationMin;
 	public int rotationMax;
 	public float startHeight;
@@ -31,9 +33,13 @@ public class LevelGenerator : MonoBehaviour {
 	public int currentlvl;
 	public int nextLvl;
 	public int BoolGameOver;
-	
+	public int doublePlatformChance;
+	public int doublePlatform;
 
-	
+	public int activeChance;
+
+
+
 	//not in inspector
 	int size;
 	GameManager manager;
@@ -44,14 +50,11 @@ public class LevelGenerator : MonoBehaviour {
 		BoolGameOver = PlayerPrefs.GetInt("BoolGameOver");
 		//build level
 		MakeLevel();
+		
 		if (BoolGameOver == 1)
         {
 			ChangeColor(Random.Range(0,3));
 		}
-		
-
-
-
 	}
 	
 	private void MakeLevel(){
@@ -62,34 +65,53 @@ public class LevelGenerator : MonoBehaviour {
 		
 		//loop over the size of the level
 		for(int i = 0; i < size; i++){
-			//make new platform and position it above the last one, also rotate it
-			GameObject newPlatform = Instantiate(platform);
+
+			
+			
+            GameObject newPlatform = Instantiate(platform);
+			
+
 			newPlatform.transform.position = Vector3.up * height;
-			newPlatform.transform.Rotate(Vector3.up * rot);
+            newPlatform.transform.Rotate(Vector3.up * rot);
+
+
+            //parent platform so it rotates with the other platforms
+            newPlatform.transform.SetParent(parent, false);
+
+            //randomly show diamonds on some platforms
+            bool diamond = i > 0 && !lastHadDiamond && Random.Range(0, diamondChance) == 0;
+            newPlatform.GetComponent<Platform>().SetDiamond(diamond, i < size - 3 && i > 0);
+
+            lastHadDiamond = diamond;
+
+            //get random rotation for the next platform
+            float randomRotation = Random.Range(rotationMin, rotationMax);
+
+            if (i == 0)
+                randomRotation = Random.Range((rotationMin + rotationMax) / 2, rotationMax);
+
+            bool rotateLeft = Random.Range(0, 2) == 0;
+
+            //rotate either left or right
+            rot += rotateLeft ? -randomRotation : randomRotation;
+
+            //increase height so the next platform gets spawned above the current one
+
+            height += yOffset;
+
+			int ch = Random.Range(0, 100);
+			GameObject dPlatform = Instantiate(doublePlatformG);
+			dPlatform.transform.SetParent(parent, false);
+			if (ch < 50)
+			{
+				
+				dPlatform.transform.position = Vector3.up * height;
+				dPlatform.transform.Rotate(Vector3.up * Random.Range(-360, 360));
 			
-			
-			//parent platform so it rotates with the other platforms
-			newPlatform.transform.SetParent(parent, false);
-			
-			//randomly show diamonds on some platforms
-			bool diamond = i > 0 && !lastHadDiamond && Random.Range(0, diamondChance) == 0;
-			newPlatform.GetComponent<Platform>().SetDiamond(diamond, i < size - 3 && i > 0);
-			
-			lastHadDiamond = diamond;
-			
-			//get random rotation for the next platform
-			float randomRotation = Random.Range(rotationMin, rotationMax);
-			
-			if(i == 0)
-				randomRotation = Random.Range((rotationMin + rotationMax)/2, rotationMax);
-			
-			bool rotateLeft = Random.Range(0, 2) == 0;
-			
-			//rotate either left or right
-			rot += rotateLeft ? -randomRotation : randomRotation;
-			
-			//increase height so the next platform gets spawned above the current one
-			height += yOffset;
+
+				Debug.Log(i);
+			}
+
 		}
 		
 
@@ -105,6 +127,9 @@ public class LevelGenerator : MonoBehaviour {
 		
 	}
 
+	
+
+	
 	public void ChangeColor(int colorSet)
 	{
 		if (colorSet == 0)

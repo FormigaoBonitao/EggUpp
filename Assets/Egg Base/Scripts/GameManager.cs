@@ -57,8 +57,9 @@ public class GameManager : MonoBehaviour {
 	
 
 	LevelGenerator generator;
+	CameraController cameraScript;
 
-	
+
 
 
 
@@ -157,6 +158,7 @@ public class GameManager : MonoBehaviour {
 			return;
 		}
 		
+		
 		//increase pitch for rewarding sound effect
 		jumpAudio.pitch *= 1.02f;
 		jumpAudio.Play();
@@ -170,6 +172,9 @@ public class GameManager : MonoBehaviour {
 		
 		//show the +1 effect
 		Instantiate(plusEffect, playerPos + Vector3.right * 0.7f, plusEffect.transform.rotation);
+
+		
+
 	}
 	
 	void UpdateProgress(){

@@ -16,10 +16,14 @@ public class CameraController : MonoBehaviour {
 	
 	void Update(){
 		//always move the target point to the highest player position
-		if (player.transform.position.y > target.y + offset)
-        {
-			target = Vector3.up * (player.transform.position.y - offset);
-		}
+		//if (player.transform.position.y > target.y + offset)
+  //      {
+		//	target = Vector3.up * (player.transform.position.y - offset);
+		//}
+
+		
+
+		
         //move camera towards the target point
         transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * movespeed);
 
@@ -45,5 +49,11 @@ public class CameraController : MonoBehaviour {
 		}
 		
 		cameraTransform.localPosition = localPos;
+	}
+
+	public void CheckJump()
+    {
+		target = Vector3.up * (player.transform.position.y);
+		
 	}
 }

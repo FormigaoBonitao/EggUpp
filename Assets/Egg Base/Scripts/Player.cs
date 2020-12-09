@@ -18,17 +18,21 @@ public class Player : MonoBehaviour
 	public Animator anim;
 	public float fallForce;
 	public bool crash;
+	public GameObject cameraHolder;
 	
 
 
 	//not in inspector
 	GameManager manager;
+	
+	
 
 	private void Start()
 	{
 		//get game manager
 		manager = FindObjectOfType<GameManager>();
 		anim = GetComponent<Animator>();
+		
 	}
 	private void Update()
 	{
@@ -36,7 +40,7 @@ public class Player : MonoBehaviour
 	}
 	private void FixedUpdate()
 	{
-		if (rb.velocity.y < 0)
+		if (rb.velocity.y <= 0)
 		{
 			rb.AddForce(new Vector3(0, fallForce, 0), ForceMode.Impulse);
 		}
@@ -69,13 +73,20 @@ public class Player : MonoBehaviour
 
 			//jump up
 			rb.velocity = Vector3.up * (platform.hasBouncePad ? bouncePadJumpForce : jumpForce);
+		
 
-			manager.Jumped(transform.position);
+		manager.Jumped(transform.position);
 
 		//hide the intro title after the player jumps
 		if (transform.position.y > 1f)
 			manager.HideTitle();
+
+
+		if (other.gameObject.tag.Equals("Platform"))
+		{
+			cameraHolder.GetComponent<CameraController>().CheckJump();
 		}
+	}
 	private void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject.tag.Equals("BigPlatform"))
@@ -83,6 +94,8 @@ public class Player : MonoBehaviour
 			manager.eggCrash.Play();
 			Debug.Log("eeeeeeee");
 		}
+
+		
 	}
 
 
