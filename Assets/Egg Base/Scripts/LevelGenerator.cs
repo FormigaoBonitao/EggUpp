@@ -42,24 +42,16 @@ public class LevelGenerator : MonoBehaviour {
     private void Start(){
 		//get the total level size from the game manager
 		size = FindObjectOfType<GameManager>().totalHeight;
-		BoolGameOver = PlayerPrefs.GetInt("BoolGameOver");
-		//build level
-
-		if (PlayerPrefs.GetInt("Level") != 0)
-        {
-			MakeLevel();
-		}
-        else
-        {
-			gameObject.AddComponent<TheFirstLevel>().MakeFirstLevel();
-			Debug.Log("The First Level");
-        }
-		
-		
-		if (BoolGameOver == 1)
-        {
+		BoolGameOver = PlayerPrefs.GetInt("BoolGameOver");	
+		if (BoolGameOver == 1 && (PlayerPrefs.GetInt("Level") != 0)) 
+		{
+			
 			ChangeColor(Random.Range(0,3));
 		}
+		if ((PlayerPrefs.GetInt("Level") != 0))
+        {
+			MakeLevel();
+        }
 	}
 	
 	private void MakeLevel(){
@@ -112,11 +104,7 @@ public class LevelGenerator : MonoBehaviour {
 			{
 				dPlatform.SetActive(true);
 				dPlatform.transform.position = Vector3.up * height;
-				dPlatform.transform.Rotate(Vector3.up * Random.Range(-360, 360));
-			
-
-				
-
+				dPlatform.transform.Rotate(Vector3.up *( rot + Random.Range(50,280)));
 			}
 
 		}

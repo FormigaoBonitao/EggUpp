@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour {
 	private int playerObject, collideObject;
 
 	public GameObject BrokePlatform;
+	
 	public GameObject BigPlatform;
 	
 
@@ -77,7 +78,7 @@ public class GameManager : MonoBehaviour {
 	public int totalHeight;
 	
 	int currentHeight;
-	float lastHeight;
+	 public float lastHeight;
 	
 	public int checkLvl;
 	void Awake(){
@@ -109,6 +110,7 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	void Update(){
+		
 		//check if the game is still going
 		if(!gameOver){
 			
@@ -128,6 +130,7 @@ public class GameManager : MonoBehaviour {
 				GameOver(false);
 				
 			}
+
 		}
 		else if(Input.GetMouseButtonDown(0)){
 			//if game is over and player taps, reload the current scene
@@ -155,7 +158,10 @@ public class GameManager : MonoBehaviour {
 			jumpAudio.pitch = 1f;
 			jumpAudio.Play();
 			
+
 			return;
+
+
 		}
 		
 		
@@ -167,6 +173,7 @@ public class GameManager : MonoBehaviour {
 		
 		lastHeight = playerPos.y;
 		
+
 		//update progress UI
 		UpdateProgress();
 		
@@ -177,7 +184,8 @@ public class GameManager : MonoBehaviour {
 
 	}
 	
-	void UpdateProgress(){
+	void UpdateProgress()
+	{
 		//get current progress and update progress bar, background, and particles
 		float percentage = (float)currentHeight/(float)totalHeight;
 		
@@ -287,5 +295,7 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
- 
+	
+
+
 }

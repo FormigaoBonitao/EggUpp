@@ -40,7 +40,7 @@ public class Platform : MonoBehaviour {
     public void Bounce(Vector3 particlePosition, Material mat){
         
         //play animation and show circle effect
-        bounceAnim.SetTrigger("Bounce");
+       bounceAnim.SetTrigger("Bounce");
         circle.SetTrigger("Play");
 
         if (hasBouncePad)

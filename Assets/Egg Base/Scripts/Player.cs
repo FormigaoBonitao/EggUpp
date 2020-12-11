@@ -18,8 +18,10 @@ public class Player : MonoBehaviour
 	public Animator anim;
 	public float fallForce;
 	public bool crash;
-	public GameObject cameraHolder;
-	
+	public GameObject Cam;
+	public bool isWork;
+
+
 
 
 	//not in inspector
@@ -32,6 +34,7 @@ public class Player : MonoBehaviour
 		//get game manager
 		manager = FindObjectOfType<GameManager>();
 		anim = GetComponent<Animator>();
+		
 		
 	}
 	private void Update()
@@ -70,20 +73,18 @@ public class Player : MonoBehaviour
         //show platform bounce effect
         Platform platform = other.gameObject.transform.parent.GetComponent<Platform>();
         platform.Bounce(transform.position - (Vector3.up * eggHeight), eggMat);
-		Cam();
-
 		// jump up
-
 		rb.velocity = Vector3.up * (platform.hasBouncePad ? bouncePadJumpForce : jumpForce);
-
-
         manager.Jumped(transform.position);
 
 		//hide the intro title after the player jumps
 		if (transform.position.y > 1f)
 			manager.HideTitle();
 
+	
 		
+
+
 
 	}
 	private void OnCollisionEnter(Collision collision)
@@ -100,12 +101,16 @@ public class Player : MonoBehaviour
 	}
 
 
-
-	public void Cam()
+	public void CameraDown()
     {
-		cameraHolder.GetComponent<CameraController>().CheckJump();
-	}
+		Cam.GetComponent<CameraController>().CameraDown();
+		isWork = false;
+    }
 
+
+	
+
+	
 
 
 
