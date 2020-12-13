@@ -1,14 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-public class LevelGenerator : MonoBehaviour {
-	
-	//visible in inspector
-	public GameObject platform;
-	public GameObject doublePlatformG;
+public class RelaxLvl : MonoBehaviour
+{
+	public GameObject platform;	
 	public Material connectionPart;
 	public Material Net;
 	public Material BountyPad;
@@ -21,112 +17,101 @@ public class LevelGenerator : MonoBehaviour {
 	public Transform parent;
 	public Transform pole;
 	public Transform finishLine;
-	
+
 	public float yOffset;
-	public float DoubleYoffset;
 	public int rotationMin;
 	public int rotationMax;
 	public float startHeight;
 	public int startRotation;
-	
 	public int diamondChance;
-
-	
 	private int BoolGameOver;
-	
 	public int doubleChance;
 	//not in inspector
 	int size;
 	GameManager manager;
-    
-    private void Start(){
+
+	private void Start()
+	{
 		//get the total level size from the game manager
 		size = FindObjectOfType<GameManager>().totalHeight;
 		BoolGameOver = PlayerPrefs.GetInt("BoolGameOver");
 
-		if ((PlayerPrefs.GetInt("Level") != 0) && (PlayerPrefs.GetInt("Level") % 4 != 0))
-        {
+		if ((PlayerPrefs.GetInt("Level") % 4 == 0) && (PlayerPrefs.GetInt("Level") != 0))
+		{
 			MakeLevel();
 			if (BoolGameOver == 1)
-			ChangeColor(Random.Range(0, 3));
-		
+				ChangeColor(Random.Range(0, 3));
+			
 
 		}
 	}
-	
-	private void MakeLevel(){
+
+	private void MakeLevel()
+	{
 		float height = startHeight;
 		float rot = startRotation;
-		
-		bool lastHadDiamond = false;
-		
-		//loop over the size of the level
-		for(int i = 0; i < size; i++){
 
-			
-			
-            GameObject newPlatform = Instantiate(platform);
-			
+		bool lastHadDiamond = false;
+
+		//loop over the size of the level
+		for (int i = 0; i < size; i++)
+		{
+
+
+
+			GameObject newPlatform = Instantiate(platform);
+
 
 			newPlatform.transform.position = Vector3.up * height;
-            newPlatform.transform.Rotate(Vector3.up * rot);
+			newPlatform.transform.Rotate(Vector3.up * rot);
 
 
-            //parent platform so it rotates with the other platforms
-            newPlatform.transform.SetParent(parent, false);
+			//parent platform so it rotates with the other platforms
+			newPlatform.transform.SetParent(parent, false);
 
-            //randomly show diamonds on some platforms
-            bool diamond = i > 0 && !lastHadDiamond && Random.Range(0, diamondChance) == 0;
-            newPlatform.GetComponent<Platform>().SetDiamond(diamond, i < size - 3 && i > 0);
+			//randomly show diamonds on some platforms
+			bool diamond = i > 0 && !lastHadDiamond && Random.Range(0, diamondChance) == 0;
+			newPlatform.GetComponent<Platform>().SetDiamond(diamond, i < size - 3 && i > 0);
 
-            lastHadDiamond = diamond;
+			lastHadDiamond = diamond;
 
-            //get random rotation for the next platform
-            float randomRotation = Random.Range(rotationMin, rotationMax);
+			//get random rotation for the next platform
+			float randomRotation = rot += 10;
 
-            if (i == 0)
-                randomRotation = Random.Range((rotationMin + rotationMax) / 2, rotationMax);
+			//if (i == 0)
+				//randomRotation = Random.Range((rotationMin + rotationMax) / 2, rotationMax);
 
-            bool rotateLeft = Random.Range(0, 2) == 0;
+			//bool rotateLeft = Random.Range(0, 2) == 0;
 
-            //rotate either left or right
-            rot += rotateLeft ? -randomRotation : randomRotation;
+			//rotate either left or right
+			//rot += rotateLeft ? -randomRotation : randomRotation;
 
-            //increase height so the next platform gets spawned above the current one
+			//increase height so the next platform gets spawned above the current one
 
-            height += yOffset;
+			height += yOffset;
 
-			int ch = Random.Range(0, 100);
-			GameObject dPlatform = Instantiate(doublePlatformG);
-			dPlatform.SetActive(false);
-			dPlatform.transform.SetParent(parent, false);
-			if (ch < doubleChance)
-			{
-				dPlatform.SetActive(true);
-				dPlatform.transform.position = Vector3.up * height;
-				dPlatform.transform.Rotate(Vector3.up *( rot + Random.Range(50,280)));
-			}
+			
 
 		}
-		
+
 
 
 
 		//position the finish line at the top and scale the center pole
 		finishLine.position = Vector3.up * height;
 		finishLine.SetParent(parent, false);
-		
+
 		Vector3 poleScale = pole.localScale;
 		pole.localScale = new Vector3(poleScale.x, height, poleScale.z);
 
-		
+
 	}
 
 
 
-	
 
-	
+
+
 	public void ChangeColor(int colorSet)
 	{
 		if (colorSet == 0)
@@ -136,7 +121,7 @@ public class LevelGenerator : MonoBehaviour {
 			BountyPad.color = new Color(1f, 0.12f, 0.25f, 1);
 			Ring.color = new Color(1f, 0.1254902f, 0.2509804f, 1);
 			Pole.color = new Color(0.1882353f, 1f, 0.7529412f, 1);
-			cameraColor.color =new Color(0.4196078f, 0.6470588f, 0.627451f, 1);
+			cameraColor.color = new Color(0.4196078f, 0.6470588f, 0.627451f, 1);
 			Egg.color = new Color(1f, 0f, 0.3764706f, 1);
 			Diamond.color = new Color(0.4196078f, 0.6470588f, 0.627451f, 1);
 		}
@@ -177,7 +162,5 @@ public class LevelGenerator : MonoBehaviour {
 
 	}
 
-	
 
-	
 }

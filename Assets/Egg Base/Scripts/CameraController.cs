@@ -11,7 +11,6 @@ public class CameraController : MonoBehaviour {
 	public Transform cameraTransform;
 	GameManager manager;
 	public bool isWork;
-	public GameObject pl; 
 	
 	//not in inspector
 	Vector3 target;

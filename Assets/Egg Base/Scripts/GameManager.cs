@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour {
 		//get the level index and set the size of this level accordingly
 	
 		int level = PlayerPrefs.GetInt("Level");
-		totalHeight = 25;
+		totalHeight = 20;
 		
 		//update the level labels at the bottom of the screen
 		leftText.text = (level + 1) + "";

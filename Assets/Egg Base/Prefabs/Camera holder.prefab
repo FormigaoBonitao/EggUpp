@@ -4860,6 +4860,8 @@ MonoBehaviour:
   offset: 2.7
   movespeed: 6
   cameraTransform: {fileID: 354516789633184714}
+  isWork: 0
+  pl: {fileID: 0}
 --- !u!1 &354516789590742575
 GameObject:
   m_ObjectHideFlags: 0
@@ -5025,7 +5027,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.3820755, g: 0.68178725, b: 1, a: 0}
+  m_BackGroundColor: {r: 0.6476059, g: 0.6860129, b: 0.7264151, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
