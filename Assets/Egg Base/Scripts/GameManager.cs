@@ -53,20 +53,16 @@ public class GameManager : MonoBehaviour {
 	public GameObject BrokePlatform;
 	
 	public GameObject BigPlatform;
-	
-
-	
-
-	LevelGenerator generator;
-	CameraController cameraScript;
+	Vibration vibration;
 
 
 
 
 
-	Player playerJump;
-	
-	
+
+
+
+
 	//not in inspector
 	bool titleHidden;
 	
@@ -117,18 +113,14 @@ public class GameManager : MonoBehaviour {
 			//if the player crosses the finish line, he wins
 			if(player.position.y > finishLine.position.y){
 				gameOver = true;
-
-				WinScreen();
-			
-				GameOver(true);
-				
+				WinScreen();			
+				GameOver(true);				
 			}
 			
 			//if the player falls down too far, the player loses
 			if(player.position.y < lastHeight - 4.5f){
 				gameOver = true;			
-				GameOver(false);
-				
+				GameOver(false);				
 			}
 
 		}
@@ -139,11 +131,11 @@ public class GameManager : MonoBehaviour {
 		}
 		
 		//fade background transparency
-		if(backgroundOverlay.color.a < backgroundAlpha)
-			backgroundOverlay.color = new Color(backgroundOverlay.color.r, 
-												backgroundOverlay.color.g, 
-												backgroundOverlay.color.b, 
-												backgroundOverlay.color.a + (backgroundAlphaSpeed * Time.deltaTime));
+		//if(backgroundOverlay.color.a < backgroundAlpha)
+		//	backgroundOverlay.color = new Color(backgroundOverlay.color.r, 
+		//										backgroundOverlay.color.g, 
+		//										backgroundOverlay.color.b, 
+		//										backgroundOverlay.color.a + (backgroundAlphaSpeed * Time.deltaTime));
 	}
 	
 	//deactivate the player
@@ -155,6 +147,7 @@ public class GameManager : MonoBehaviour {
 	public void Jumped(Vector3 playerPos){
 		//if the player didn't get to the next platform, reset audio pitch and return
 		if(playerPos.y < lastHeight + 0.2f){
+		
 			jumpAudio.pitch = 1f;
 			jumpAudio.Play();
 			
@@ -227,6 +220,7 @@ public class GameManager : MonoBehaviour {
 		if(success)
 		{
 			//play confetti and continue to next level
+			Handheld.Vibrate();
 			confetti.Play();
 			solut.Play();
 
@@ -244,6 +238,7 @@ public class GameManager : MonoBehaviour {
 			tapToContinue.SetActive(true);
 		}
 		else{
+			Handheld.Vibrate();
 			//show the restart text
 			tapToRestart.SetActive(true);
 			holdToRotate.SetActive(false);

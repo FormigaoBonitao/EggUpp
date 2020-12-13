@@ -1281,7 +1281,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 1522689476835324134, guid: 0e8f1cd527fbd4041a2a50e79003e387, type: 3}
-  doublePlatformG: {fileID: 0}
   connectionPart: {fileID: 2100000, guid: c41fc927001e8d14c85cde6b6c3b7acd, type: 2}
   Net: {fileID: 2100000, guid: f36fad7d5a7718e4982af1afc016fa2d, type: 2}
   BountyPad: {fileID: 2100000, guid: 6e55ecc9dc29c0e42be0dd2b6a022520, type: 2}
@@ -1294,7 +1293,6 @@ MonoBehaviour:
   pole: {fileID: 1361770968}
   finishLine: {fileID: 4285758705053515644}
   yOffset: 1.4
-  DoubleYoffset: 0
   rotationMin: 10
   rotationMax: 11
   startHeight: 0
@@ -1966,6 +1964,7 @@ GameObject:
   - component: {fileID: 1536160528}
   - component: {fileID: 1536160529}
   - component: {fileID: 1536160530}
+  - component: {fileID: 1536160531}
   m_Layer: 0
   m_Name: Game manager
   m_TagString: Untagged
@@ -2417,6 +2416,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1536160531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536160524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eac63f35abbe0446b2e6aceb53269d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1555019913 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 852081446857063989, guid: 13d97d3c3ee437c4ba57f7724c1ef06d, type: 3}

@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
 
 	//not in inspector
 	GameManager manager;
+	Vibration vibro;
 	
 	
 
@@ -66,23 +67,31 @@ public class Player : MonoBehaviour
 
 		void OnTriggerEnter(Collider other)
 		{
-        //return if collider isn't a platform or if player is below collider (meaning the player should jump through the platform)
-        //if(!other.gameObject.CompareTag("Platform") || transform.position.y < other.gameObject.transform.position.y)
-        //	return;
+		//return if collider isn't a platform or if player is below collider (meaning the player should jump through the platform)
+		//if(!other.gameObject.CompareTag("Platform") || transform.position.y < other.gameObject.transform.position.y)
+		//	return;
 
-        //show platform bounce effect
+		//show platform bounce effect
+		
         Platform platform = other.gameObject.transform.parent.GetComponent<Platform>();
         platform.Bounce(transform.position - (Vector3.up * eggHeight), eggMat);
 		// jump up
 		rb.velocity = Vector3.up * (platform.hasBouncePad ? bouncePadJumpForce : jumpForce);
         manager.Jumped(transform.position);
+		
 
 		//hide the intro title after the player jumps
 		if (transform.position.y > 1f)
 			manager.HideTitle();
 
-	
-		
+		if (!other.gameObject.CompareTag("Platform"))
+	    {
+			vibro.isVibration = true;
+
+		}
+
+
+
 
 
 
@@ -91,8 +100,10 @@ public class Player : MonoBehaviour
 	{
 		if (collision.gameObject.tag.Equals("BigPlatform"))
 		{
+			
 			manager.eggCrash.Play();
-			Debug.Log("eeeeeeee");
+			Debug.Log("eeeeeeee"); 
+			
 		}
 
 		
