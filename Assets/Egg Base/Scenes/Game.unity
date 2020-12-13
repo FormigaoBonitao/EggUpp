@@ -215,7 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1294843737}
   offset: 2.7
-  movespeed: 6
+  movespeed: 12
   cameraTransform: {fileID: 316153725}
   isWork: 0
 --- !u!4 &115686506
@@ -1964,7 +1964,6 @@ GameObject:
   - component: {fileID: 1536160528}
   - component: {fileID: 1536160529}
   - component: {fileID: 1536160530}
-  - component: {fileID: 1536160531}
   m_Layer: 0
   m_Name: Game manager
   m_TagString: Untagged
@@ -2416,18 +2415,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1536160531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1536160524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3eac63f35abbe0446b2e6aceb53269d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1555019913 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 852081446857063989, guid: 13d97d3c3ee437c4ba57f7724c1ef06d, type: 3}
@@ -8620,6 +8607,10 @@ PrefabInstance:
       propertyPath: isWork
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1548024567368110122, guid: e074d5669397340449e1ce8946151ec3, type: 3}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1536160524}
     - target: {fileID: 1548024567368110123, guid: e074d5669397340449e1ce8946151ec3, type: 3}
       propertyPath: m_IsTrigger
       value: 0

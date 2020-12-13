@@ -99,7 +99,7 @@ public class RelaxLvl : MonoBehaviour
 
 		//position the finish line at the top and scale the center pole
 		finishLine.position = Vector3.up * height;
-		finishLine.SetParent(parent, false);
+		//finishLine.SetParent(parent, false);
 
 		Vector3 poleScale = pole.localScale;
 		pole.localScale = new Vector3(poleScale.x, height, poleScale.z);

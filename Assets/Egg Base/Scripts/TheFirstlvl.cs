@@ -61,7 +61,7 @@ public class TheFirstlvl : MonoBehaviour
 			height += yOffset;
 
 			finishLine.position = Vector3.up * height;
-			finishLine.SetParent(parent, false);
+			//finishLine.SetParent(parent, false);
 
 			Vector3 poleScale = pole.localScale;
 			pole.localScale = new Vector3(poleScale.x, height, poleScale.z);

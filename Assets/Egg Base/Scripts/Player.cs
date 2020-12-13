@@ -20,13 +20,14 @@ public class Player : MonoBehaviour
 	public bool crash;
 	public GameObject Cam;
 	public bool isWork;
+	public GameObject GameManager;
 
 
 
 
 	//not in inspector
 	GameManager manager;
-	Vibration vibro;
+	
 	
 	
 
@@ -40,7 +41,8 @@ public class Player : MonoBehaviour
 	}
 	private void Update()
 	{
-		
+		if (transform.position.y > 3f)
+			manager.HideTitle();
 	}
 	private void FixedUpdate()
 	{
@@ -81,14 +83,8 @@ public class Player : MonoBehaviour
 		
 
 		//hide the intro title after the player jumps
-		if (transform.position.y > 1f)
-			manager.HideTitle();
+		
 
-		if (!other.gameObject.CompareTag("Platform"))
-	    {
-			vibro.isVibration = true;
-
-		}
 
 
 

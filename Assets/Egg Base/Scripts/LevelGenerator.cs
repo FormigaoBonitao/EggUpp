@@ -114,7 +114,7 @@ public class LevelGenerator : MonoBehaviour {
 
 		//position the finish line at the top and scale the center pole
 		finishLine.position = Vector3.up * height;
-		finishLine.SetParent(parent, false);
+		//finishLine.SetParent(parent, false);
 		
 		Vector3 poleScale = pole.localScale;
 		pole.localScale = new Vector3(poleScale.x, height, poleScale.z);
@@ -139,6 +139,7 @@ public class LevelGenerator : MonoBehaviour {
 			cameraColor.color =new Color(0.4196078f, 0.6470588f, 0.627451f, 1);
 			Egg.color = new Color(1f, 0f, 0.3764706f, 1);
 			Diamond.color = new Color(0.4196078f, 0.6470588f, 0.627451f, 1);
+
 		}
 		else if (colorSet == 1)
 		{

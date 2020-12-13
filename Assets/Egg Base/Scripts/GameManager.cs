@@ -53,8 +53,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject BrokePlatform;
 	
 	public GameObject BigPlatform;
-	Vibration vibration;
-
+	
 
 
 
@@ -220,9 +219,10 @@ public class GameManager : MonoBehaviour {
 		if(success)
 		{
 			//play confetti and continue to next level
-			Handheld.Vibrate();
+			
 			confetti.Play();
 			solut.Play();
+			DisablePlayer();
 
 			rightCircle.color = leftCircle.color;
 			rightBackground.SetActive(true);
@@ -238,7 +238,7 @@ public class GameManager : MonoBehaviour {
 			tapToContinue.SetActive(true);
 		}
 		else{
-			Handheld.Vibrate();
+			
 			//show the restart text
 			tapToRestart.SetActive(true);
 			holdToRotate.SetActive(false);
@@ -256,8 +256,9 @@ public class GameManager : MonoBehaviour {
 		playerParent.GetComponent<SphereCollider>().isTrigger = false;
 		BrokePlatform.SetActive(true);
 		PlayerPrefs.SetInt("BoolGameOver", 0);
+		Handheld.Vibrate();
 
-		
+
 
 
 		if (playerParent.GetComponent<Rigidbody>().velocity.y < 0)
@@ -274,13 +275,14 @@ public class GameManager : MonoBehaviour {
 
 	public void WinScreen()
     {
-		playerParent.GetComponent<Rigidbody>().AddForce(new Vector3(0, 10, 1), ForceMode.Impulse);
+		//playerParent.GetComponent<Rigidbody>().AddForce(new Vector3(0, 10, 1), ForceMode.Impulse);
 		//playerParent.transform.Translate(new Vector3(0,  3, 1.5f));
 		playerParent.GetComponent<SphereCollider>().isTrigger = false;
 		playerParent.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
 		playerParent.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationY;	
 		PlayerPrefs.SetInt("BoolGameOver", 1);
-		
+		Handheld.Vibrate();
+
 
 
 		if (playerParent.GetComponent<Rigidbody>().velocity.y > 0)
