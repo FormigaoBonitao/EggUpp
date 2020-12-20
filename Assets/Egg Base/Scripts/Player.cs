@@ -15,10 +15,10 @@ public class Player : MonoBehaviour
 	public float meshEffectLimit;
 	public float eggHeight;
 	public Material eggMat;
-	public Animator anim;
+    private Animator anim;
 	public float fallForce;
-	public bool crash;
-	public GameObject Cam;
+	public  bool crash;
+	
 	public bool isWork;
 	public GameObject GameManager;
 
@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
 	}
 	private void Update()
 	{
-		if (transform.position.y > 3f)
+		if (transform.position.y > 2.6f)
 			manager.HideTitle();
 	}
 	private void FixedUpdate()
@@ -59,7 +59,8 @@ public class Player : MonoBehaviour
 		{
 			manager.eggFall.Stop();
 			anim.SetTrigger("Broke");
-			
+		
+
 		}
 
 		
@@ -108,11 +109,7 @@ public class Player : MonoBehaviour
 	}
 
 
-	public void CameraDown()
-    {
-		Cam.GetComponent<CameraController>().CameraDown();
-		isWork = false;
-    }
+	
 
 
 	

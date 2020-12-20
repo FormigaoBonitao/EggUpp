@@ -39,7 +39,7 @@ public class TheFirstlvl : MonoBehaviour
 		bool lastHadDiamond = false;
 
 		//loop over the size of the level
-		for (int i = 0; i < 14; i++)
+		for (int i = 0; i < 12; i++)
 		{
 			GameObject newPlatform = Instantiate(platform);
 			newPlatform.transform.position = Vector3.up * height;

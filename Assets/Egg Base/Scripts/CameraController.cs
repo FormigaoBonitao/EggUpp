@@ -24,7 +24,7 @@ public class CameraController : MonoBehaviour {
 		else if (player.transform.position.y < target.y - 2.6f)
         {
 			target = Vector3.down * (player.transform.position.y);
-			Debug.Log("Down");
+			
         }
 		//move camera towards the target point
 		transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * movespeed);
@@ -53,11 +53,7 @@ public class CameraController : MonoBehaviour {
 		cameraTransform.localPosition = localPos;
 	}
 
-	public void CameraDown()
-    {
-		target = new Vector3(0f,transform.position.y - 2f,0f) ;
-		Debug.Log("CamaraDown");
-	}
+	
 
 	
 }

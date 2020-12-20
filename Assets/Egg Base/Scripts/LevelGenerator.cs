@@ -15,7 +15,7 @@ public class LevelGenerator : MonoBehaviour {
 	public Material Ring;
 	public Material Pole;
 	public Material cameraColor;
-	public Material Egg;
+	//public Material Egg;
 	public Material Diamond;
 
 	public Transform parent;
@@ -41,7 +41,15 @@ public class LevelGenerator : MonoBehaviour {
     
     private void Start(){
 		//get the total level size from the game manager
-		size = FindObjectOfType<GameManager>().totalHeight;
+		if (PlayerPrefs.GetInt("Level") != 6)
+		{
+			size = FindObjectOfType<GameManager>().totalHeight;
+		}
+		else
+        {
+			size = 23;
+        }
+		
 		BoolGameOver = PlayerPrefs.GetInt("BoolGameOver");
 
 		if ((PlayerPrefs.GetInt("Level") != 0) && (PlayerPrefs.GetInt("Level") % 4 != 0))
@@ -49,8 +57,6 @@ public class LevelGenerator : MonoBehaviour {
 			MakeLevel();
 			if (BoolGameOver == 1)
 			ChangeColor(Random.Range(0, 3));
-		
-
 		}
 	}
 	
@@ -137,7 +143,7 @@ public class LevelGenerator : MonoBehaviour {
 			Ring.color = new Color(1f, 0.1254902f, 0.2509804f, 1);
 			Pole.color = new Color(0.1882353f, 1f, 0.7529412f, 1);
 			cameraColor.color =new Color(0.4196078f, 0.6470588f, 0.627451f, 1);
-			Egg.color = new Color(1f, 0f, 0.3764706f, 1);
+			//Egg.color = new Color(1f, 0f, 0.3764706f, 1);
 			Diamond.color = new Color(0.4196078f, 0.6470588f, 0.627451f, 1);
 
 		}
@@ -149,7 +155,7 @@ public class LevelGenerator : MonoBehaviour {
 			Ring.color = new Color(0.5333334f, 0.07843138f, 0.7647059f, 1);
 			Pole.color = new Color(0.9137255f, 0.6156863f, 0.5529412f, 1);
 			cameraColor.color = new Color(0.8705882f, 0.7058824f, 1f, 1);
-			Egg.color = new Color(1f, 0.1607843f, 0f, 1);
+			//Egg.color = new Color(1f, 0.1607843f, 0f, 1);
 			Diamond.color = new Color(0.2980392f, 1f, 0.772549f, 1);
 		}
 		else if (colorSet == 2)
@@ -160,7 +166,7 @@ public class LevelGenerator : MonoBehaviour {
 			Ring.color = new Color(0.9764706f, 0.1686275f, 0.1686275f, 1);
 			Pole.color = new Color(0.9843137f, 0.9254902f, 0.6196079f, 1);
 			cameraColor.color = new Color(0.3882353f, 0.6901961f, 0.5882353f, 1);
-			Egg.color = new Color(0.6980392f, 0.7647059f, 0.003921569f, 1);
+			//Egg.color = new Color(0.6980392f, 0.7647059f, 0.003921569f, 1);
 			Diamond.color = new Color(1f, 0.5843138f, 0f, 1);
 		}
 		else if (colorSet == 3)
@@ -171,7 +177,7 @@ public class LevelGenerator : MonoBehaviour {
 			Ring.color = new Color(0f, 0.9568627f, 1f, 1);
 			Pole.color = new Color(0.282353f, 0.1137255f, 0.282353f, 1);
 			cameraColor.color = new Color(0.2352941f, 0.03529412f, 0.2941177f, 1);
-			Egg.color = new Color(1f, 0.572549f, 0.01568628f, 1);
+			//Egg.color = new Color(1f, 0.572549f, 0.01568628f, 1);
 			Diamond.color = new Color(1f, 0f, 0.4f, 1);
 		}
 
